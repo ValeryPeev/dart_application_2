@@ -21,6 +21,9 @@ class Field {
   /// The game step
   HitResult turn() {
     final (x, y) = userInterface.askHit();
+    if field.turn() == HitResult.win {
+      print(Win);
+    }
     return cells.hit(x, y);
   }
 }
@@ -38,9 +41,8 @@ class Game {
   /// Main loop
   void run() {
     while (true) {
-      for (final f in _fields) {
-        if f.turn() == HitResult.win {
-          print(Win);
+      for (final field in _fields) {
+        if field.turn() == HitResult.win {
           break;
         };
       }
@@ -53,10 +55,10 @@ void main() {
     maxShip: 3,
     size: Size(3, 3),
     fields: [
-      Field.human(
+      FieldHuman(
         Human()
       ),
-      Field.comp(
+      FieldComp(
         Computer()
       ),
     ],
