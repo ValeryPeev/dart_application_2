@@ -1,6 +1,7 @@
 import 'dart:io';
 import 'dart:math';
 
+/// Hit result
 const String EMPTY = '.';
 const String SHIP = '1';
 const String HIT = '2';
@@ -11,7 +12,7 @@ class Battleship {
   List<List<String>> enemyField;
   int playerShips;
   int enemyShips;
-  int size; 
+  int size;
 
   Battleship(this.size)
       : playerField = List.generate(size, (_) => List.filled(size, EMPTY)),
@@ -98,13 +99,20 @@ class Battleship {
 
   String getWinner() {
     if (playerShips <= 0) return "Skynet won!";
-    if (enemyShips <= 0) return "Player won!";  
+    if (enemyShips <= 0) return "Player won!";
     return "";
   }
 }
 
 void main() {
-  print("Enter the size ");
+  // final local = Localize("./assets/settings.json");
+  // final settings = Settings("./assets/settings.yaml");
+  // App(
+  //   settings: settings,
+  // ).run();
+
+  // final maxShip = Setting('max-ship');
+  print("EnterTheSize");
   int size = int.parse(stdin.readLineSync()!);
   print("Enter the number of ships: ");
   int numberOfShips = int.parse(stdin.readLineSync()!);
